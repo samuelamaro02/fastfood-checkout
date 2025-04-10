@@ -36,6 +36,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
       >
         <ScrollTextIcon />
       </Button>
+      
     </div>
   );
 };
