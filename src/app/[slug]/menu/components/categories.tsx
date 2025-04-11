@@ -1,12 +1,14 @@
 // components/RestaurantCategories.tsx
 "use client";
 
-import { useState } from "react";
 import { Prisma } from "@prisma/client";
 import { ScrollArea, Scrollbar } from "@radix-ui/react-scroll-area";
 import { Clock } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
+
 import Products from "./products";
 
 interface RestaurantCategoriesProps {
@@ -22,13 +24,12 @@ interface RestaurantCategoriesProps {
 }
 
 type MenuCategoriesWidthProducts = Prisma.MenuCategoryGetPayload<{
-    include: { products: true };
-}>
+  include: { products: true };
+}>;
 
 const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<MenuCategoriesWidthProducts>(
-    restaurant.menuCategories[0],
-  );
+  const [selectedCategory, setSelectedCategory] =
+    useState<MenuCategoriesWidthProducts>(restaurant.menuCategories[0]);
 
   const handleCategoryClick = (category: MenuCategoriesWidthProducts) => {
     setSelectedCategory(category);
@@ -76,8 +77,8 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
         </div>
         <Scrollbar orientation="horizontal" />
       </ScrollArea>
-          <h3 className="px-5 font-semibold pt-8">{selectedCategory.name}</h3>
-          <Products products={selectedCategory.products}/>
+      <h3 className="px-5 pt-8 font-semibold">{selectedCategory.name}</h3>
+      <Products products={selectedCategory.products} />
     </div>
   );
 };
