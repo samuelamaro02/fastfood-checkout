@@ -22,7 +22,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   return (
     <div className="flex h-full flex-col">
       <ProductHeader product={product} />
-      <ProductDetails product={product} restaurant={product.restaurant} />
+      <ProductDetails product={product} />
     </div>
   );
 };
