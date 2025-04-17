@@ -1,18 +1,19 @@
-import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
-import Image from "next/image";
-import { useContext } from "react";
+import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from 'lucide-react';
+import Image from 'next/image';
+import { useContext } from 'react';
 
-import { Button } from "@/components/ui/button";
-import { formatCurrency } from "@/helpers/format-currency";
+import { Button } from '@/components/ui/button';
+import { formatCurrency } from '@/helpers/format-currency';
 
-import { CartContext, CartProduct } from "../contexts/cart";
+import { CartContext, CartProduct } from '../contexts/cart';
 
 interface CartItemProps {
   product: CartProduct;
 }
 
 const CartProductItem = ({ product }: CartItemProps) => {
-  const {decreaseProductQuantity, increaseProductQuantity, removeProduct} = useContext(CartContext);
+  const { decreaseProductQuantity, increaseProductQuantity, removeProduct } =
+    useContext(CartContext);
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
@@ -32,17 +33,29 @@ const CartProductItem = ({ product }: CartItemProps) => {
             {formatCurrency(product.price)}
           </p>
           <div className="flex items-center gap-1 text-center">
-            <Button className="h-7 w-7 rounded-lg" variant="outline" onClick={() => decreaseProductQuantity(product.id)}>
+            <Button
+              className="h-7 w-7 rounded-lg"
+              variant="outline"
+              onClick={() => decreaseProductQuantity(product.id)}
+            >
               <ChevronLeftIcon></ChevronLeftIcon>
             </Button>
             <p className="w-7 text-xs">{product.quantity}</p>
-            <Button className="h-7 w-7 rounded-lg" variant="destructive" onClick={() => increaseProductQuantity(product.id)}>
+            <Button
+              className="h-7 w-7 rounded-lg"
+              variant="destructive"
+              onClick={() => increaseProductQuantity(product.id)}
+            >
               <ChevronRightIcon></ChevronRightIcon>
             </Button>
           </div>
         </div>
       </div>
-      <Button className="h-7 w-7 rounded-lg" variant="outline" onClick={() => removeProduct(product.id)}>
+      <Button
+        className="h-7 w-7 rounded-lg"
+        variant="outline"
+        onClick={() => removeProduct(product.id)}
+      >
         <TrashIcon className="h-4 w-4" />
       </Button>
     </div>
